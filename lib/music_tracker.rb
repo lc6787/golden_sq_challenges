@@ -19,7 +19,6 @@ class MusicTracker
   
   def history
     history = @history.map { |artist, track| "#{artist} - #{track}"}.to_a
-    puts "YOUR HISTORY:\n#{history.join("\n")}"
     return "YOUR HISTORY:\n#{history.join("\n")}"
   end
 end
