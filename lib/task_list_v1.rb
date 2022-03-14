@@ -6,23 +6,23 @@
 # So that I can focus on tasks to complete
 # I want to mark tasks as complete and have them disappear from the list.
 
-class TodoList
+class TaskList
   def initialize
-    @todo_list = []
+    @task_list = []
   end
 
-  def todos
-    return @todo_list
+  def tasks
+    return @task_list
   end
 
-  def add_todo(todo)
-    @todo_list << todo
+  def add_task(task)
+    @task_list << task
   end
 
   def see_list
-    if @todo_list.length >= 1
+    if @task_list.length >= 1
       list = ""
-      for task in @todo_list do
+      for task in @task_list do
       list << "- #{task}\n"
       end
       return list
@@ -31,7 +31,7 @@ class TodoList
     end
   end
 
-  def complete(todo)
-   @todo_list.delete(todo)
+  def complete(task)
+   @task_list.delete(task)
   end
 end
