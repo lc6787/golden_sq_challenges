@@ -32,5 +32,24 @@ RSpec.describe "integration" do
 
       expect(my_journal.count_words).to eq 19
     end
+
+    it "calculates estimated reading time" do
+      my_journal = Journal.new
+      entry_1 = JournalEntry.new("Monday", "Today was a great day. I learnt test driven development!")
+      entry_2 = JournalEntry.new("Tuesday", "The sun was shinning, I went for a walk.")
+      my_journal.add(entry_1)
+      my_journal.add(entry_2)
+
+      expect(my_journal.reading_time(5)).to eq 3.8
+    end
+
+    it "yields error message when zero reading speed given" do
+      my_journal = Journal.new
+      entry_1 = JournalEntry.new("Monday", "Today was a great day. I learnt test driven development!")
+      my_journal.add(entry_1)
+
+      expect { my_journal.reading_time(0) }.to raise_error "Reading speed must be above zero."
+    end
+
   end
 end
